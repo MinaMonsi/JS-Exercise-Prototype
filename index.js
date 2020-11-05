@@ -47,7 +47,7 @@ function Person(name, age) {
 Person.prototype.eat = function (edible) {
   if (this.stomach.length < 10) {
     edible;
-    this.stomach.push;
+    this.stomach.push(edible);
   }
 };
 
@@ -58,6 +58,9 @@ Person.prototype.poop = function () {
 Person.prototype.toString = function () {
   return `${this.name}, ${this.age}`;
 };
+
+const person1 = new Person("Mary", 50);
+console.log(person1.toString());
 
 /*
   TASK 2
@@ -73,7 +76,16 @@ Person.prototype.toString = function () {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(model, milesPerGallon) {}
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+
+Car.prototype.fill = function (gallons) {
+  this.tank = this.tank * gallons;
+};
 
 /*
   TASK 3
@@ -92,10 +104,11 @@ Baby.prototype.play = function () {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  In JavaScript, 'this' refers to the object it bolongs to.
+  1. When used within global scope, the value of 'this' is the window/console Object.
+  2. Implicit binding occurs when dot notation is used.  When using 'this.' in a function, the object before the dot is this.
+  3. New binding occurs in a constructor function where 'this' refers to a specific instanceof the object that is created and returned by the constructor function
+  4. Explicit binding occurs when using apply or call method.  In this case, 'this' is explicitly defined.
 */
 
 ///////// END OF CHALLENGE /////////
